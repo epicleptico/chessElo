@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-lg-9">
+        <h1>Match #{{match.$$id}} in round: <a ng-href="#round/{{match.round}}">#{{ match.round}}</a></h1>
+        <div class="row">
+            <div class="col-lg-5" class="text-right">
+                <h3>
+                    #{{ match.whites.positionBefore}} {{ match.whites.name }}
+                    <br />
+                    <small >({{match.whites.elo}})</small>
+                </h3>
+                <dl class="dl-horizontal">
+                    <dt>Chance:</dt>
+                    <dd>{{ (match.whites.$$e * 100) | number:2 }}%</dd>
+                    <dt>New position:</dt>
+                    <dd>{{match.whites.positionAfter}}</dd>
+                    <dt>New ELO:</dt>
+                    <dd>{{match.whites.eloResult}}</dd>
+                </dl>
+            </div>
+            <div class="col-lg-1 text-center">
+                <h3>VS</h3>
+            </div>
+            <div class="col-lg-6">
+                <h3>
+                    #{{match.blacks.positionBefore}} {{ match.blacks.name }}
+                    <br />
+                    <small >({{match.blacks.elo}})</small>
+                </h3>
+                <dl class="dl-horizontal">
+                    <dt>Chance:</dt>
+                    <dd>{{ (match.blacks.$$e * 100) | number:2 }}%</dd>
+                    <dt>New position:</dt>
+                    <dd>{{match.blacks.positionAfter}}</dd>
+                    <dt>New ELO:</dt>
+                    <dd>{{match.blacks.eloResult}}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <time-to-next-round></time-to-next-round>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<html ng-app="mainApp">
+	<head>
+		<title>ELO</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body ng-controller="mainApp.mainCtrl">
+	
+		<div class="container">
+			
+			<div class="row">
+				<div class="col-lg-12">
+					<h2>#{{ matchNum }} {{ currentMatch.playerA.name }} vs {{ currentMatch.playerB.name}}</h2>
+					<div class="row">
+						<div class="col-lg-3">
+							<dl class="dl-horizontal">
+								<dt>Elo</dt>
+								<dd>{{ currentMatch.playerA.elo }}</dd>
+								<dt>Stats</dt>
+								<dd>{{ currentMatch.ePlayerA.base * 100 | number:2 }} %</dd>
+								<dt>On win</dt>
+								<dd>{{ currentMatch.ePlayerA.win}}</dd>
+								<dt>On lose</dt>
+								<dd>{{ currentMatch.ePlayerA.lose}}</dd>
+								<dt>withdraw</dt>
+								<dd>{{ currentMatch.ePlayerA.withDraw}}</dd>
+							</dl>
+							<h3> {{ currentMatch.result == 1 ? 'WIN' : currentMatch.result == 0.5 ? 'WITHDRAW' : 'LOSE' }}</h3>
+						</div>
+						<div class="col-lg-3">
+							<dl class="dl-horizontal">
+								<dt>Elo</dt>
+								<dd>{{ currentMatch.playerB.elo }}</dd>
+								<dt>Stats</dt>
+								<dd>{{ currentMatch.ePlayerB.base * 100  | number:2}} %</dd>
+								<dt>On win</dt>
+								<dd>{{ currentMatch.ePlayerB.win}}</dd>
+								<dt>On lose</dt>
+								<dd>{{ currentMatch.ePlayerB.lose}}</dd>
+								<dt>withdraw</dt>
+								<dd>{{ currentMatch.ePlayerB.withDraw}}</dd>
+							</dl>
+							<h3> {{ currentMatch.result == 0 ? 'WIN' : currentMatch.result == 0.5 ? 'WITHDRAW' : 'LOSE' }}</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			
+			<div class="row">
+
+				<div class="col-lg-12">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Position</th>
+								<th>Id</th>
+								<th>Name</th>
+								<th>Elo</th>
+								<th>Matchs</th>
+								<th>Whites</th>
+								<th>Blacks</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="player in sortedPlayers">
+								<td>{{ $index + 1 }}</td>
+								<td>{{ player.$$id }}</td>
+								<td>{{ player.name }}</td>
+								<td>{{ player.elo }}</td>
+								<td>{{ player.numMatches }}</td>
+								<td>{{ player.whites.won }} / {{ player.whites.lost }} / {{ player.whites.withDraw }}</td>
+								<td>{{ player.blacks.won }} / {{ player.blacks.lost }} / {{ player.blacks.withDraw }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	
+		<!-- http://chancejs.com/ -->
+		<script src="http://chancejs.com/chance.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+		<script src="app/app.js"></script>
+	</body>
+</html>
