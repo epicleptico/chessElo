@@ -50,7 +50,9 @@
 
         //Show all players route data
         var playersViewAllRouteData = {
-            template: '<h2>Players</h2>'
+            templateUrl: 'app/templates/players.list.html',
+            controller: 'mainApp.players.listCtrl',
+            resolve: {}
         };
 
         var playerShowRouteData = {
