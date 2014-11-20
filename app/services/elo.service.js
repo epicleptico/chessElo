@@ -4,11 +4,11 @@
 
     mainApp.service('eloService', eloService);
 
-    function eloService($log, $rootScope, playersService, schedulerService) {
+    function eloService($log, $rootScope, $config, playersService, schedulerService) {
 
         var _roundNum = 1;
         var _matchIds = 1;
-        var timeBetweenRounds = 30;
+        var timeBetweenRounds = $config.getTimeBetweenRounds();
 
         //Here we will register all rounds
         $rootScope.rounds = [];

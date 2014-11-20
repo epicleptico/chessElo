@@ -5,10 +5,10 @@
     mainApp.controller('mainApp.mainCtrl', mainController);
 
     //Main controller
-    function mainController($log, $rootScope, $scope, playersService, eloService, schedulerService){
+    function mainController($log, $rootScope, $config, $scope, playersService, eloService, schedulerService){
 
-        var numPlayers = 100;
-        var initialNumRounds = 9;
+        var numPlayers = $config.getNumPlayers();
+        var initialNumRounds = $config.getInitialNumRounds();
 
         //First of all, we wil generate application players
         playersService.generatePlayers(numPlayers);

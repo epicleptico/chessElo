@@ -4,12 +4,20 @@
         'ngRoute',
         'ngSiwebClock',
         'ngScheduler',
-        'googlechart'
+        'googlechart',
+        'mainApp.config'
     ]);
 
     mainApp.constant('chance', chance);
     mainApp.constant('jQuery', jQuery);
     mainApp.constant('google', google);
+
+    //Initial config
+    mainApp.config(function($configProvider){
+        $configProvider.setTimeBetweenRounds(60);
+        $configProvider.setNumPlayers(1000);
+        $configProvider.setInitialNumRounds(9);
+    });
 
     //ROUTES
     mainApp.config(function($routeProvider){

@@ -128,8 +128,6 @@
             var setClockTime = function() {
 
                 if (!$scope.date || !$scope.date.getTime) {
-                    $log.error('we doesn\'t have date!');
-                    $log.debug($scope);
                     jElement.text('');
                     return;
                 }
