@@ -25,6 +25,11 @@
                         var whitePlayer = playersService.get(match.whites.$$id);
                         var blackPlayer = playersService.get(match.blacks.$$id);
 
+
+                        if(whitePlayer.historyPosition.length - 2 < 0 || blackPlayer.historyPosition.length - 2 < 0) {
+                            return;
+                        }
+
                         match.whites.position = whitePlayer.historyPosition[whitePlayer.historyPosition.length - 2].position;
                         match.blacks.position = blackPlayer.historyPosition[blackPlayer.historyPosition.length - 2].position;
 

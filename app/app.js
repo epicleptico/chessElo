@@ -16,7 +16,7 @@
     mainApp.config(function($configProvider){
         $configProvider.setTimeBetweenRounds(60);
         $configProvider.setNumPlayers(1000);
-        $configProvider.setInitialNumRounds(9);
+        $configProvider.setInitialNumRounds(999);
     });
 
     //ROUTES

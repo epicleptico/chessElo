@@ -29,10 +29,21 @@
             </div>
         </nav>
 
-        <div class="container theme-showcase" role="main">
-
+        <div class="container theme-showcase" role="main" ng-show="isStarted">
             <div ng-view></div>
+        </div>
 
+        <div class="container theme-showcase" role="main" ng-show="!isStarted">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Rounds: {{ rounds.length }} / {{ initialNumMatches }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <progressbar animate="false" value="startProgress" >{{ startProgress | number:2 }}%</progressbar>
+                </div>
+            </div>
         </div>
 
         <!-- http://chancejs.com/ -->

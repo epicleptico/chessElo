@@ -4,11 +4,15 @@
 
     mainApp.service('eloService', eloService);
 
-    function eloService($log, $rootScope, $config, playersService, schedulerService) {
+    function eloService($log, $rootScope, $interval, $config, playersService, schedulerService) {
 
+        var $this = this;
         var _roundNum = 1;
         var _matchIds = 1;
-        var timeBetweenRounds = $config.getTimeBetweenRounds();
+
+        $rootScope.isStarted = false;
+        $rootScope.startProgress = 0;
+        $rootScope.initialNumMatches = $config.getInitialNumRounds();
 
         //Here we will register all rounds
         $rootScope.rounds = [];
@@ -151,12 +155,41 @@
 
         //Start the automatic rounds
         this.start = function() {
+
+            //First of all we need to create the players..
+            playersService.generatePlayers($config.getNumPlayers());
+
             $rootScope.lastRoundTime = new Date();
-            $rootScope.nextRound = schedulerService.schedule(this.doARound, timeBetweenRounds, 0, function(nextRoundTime){
-                $rootScope.lastRoundTime = new Date();
-                $rootScope.nextRound = nextRoundTime;
-                $rootScope.$broadcast('$eloServiceRoundFinished');
-            });
+
+            var maxNumRounds = $config.getInitialNumRounds();
+
+            //We want give the UI thread some time to paint, that is why we use an interval
+            var i = 1;
+            $interval(function(){
+
+                //Do a round
+                if (i < maxNumRounds) {
+                    $this.doARound();
+
+                    $rootScope.startProgress = i * 100 / maxNumRounds;
+                } else {
+
+                    //Init the aplication
+
+                    $rootScope.lastRoundTime = new Date();
+                    $rootScope.nextRound = schedulerService.schedule($this.doARound, $config.getTimeBetweenRounds(), 0, function(nextRoundTime){
+                        $rootScope.lastRoundTime = new Date();
+                        $rootScope.nextRound = nextRoundTime;
+                        $rootScope.$broadcast('$eloServiceRoundFinished');
+                    });
+
+                    //Indicate that we have started
+                    $rootScope.isStarted = true;
+                }
+
+                i++;
+
+            }, 1, maxNumRounds + 1);
         };
 
         //Retrieve next round time
