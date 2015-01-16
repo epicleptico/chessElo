@@ -33,3 +33,7 @@ You are allowed to copy, edit, install and move to trash this project
 
  3. Code is provided with no warranty. Using somebody else's code and bitching when it goes wrong makes
  you a DONKEY dick. Fix the problem yourself. A non-dick would submit the fix back.
+
+> Notes
+
+I abandoned this project. There was somme features that i wanted to put into but i have no time for it.
