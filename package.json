@@ -1,0 +1,19 @@
+{
+  "name": "chesselo",
+  "version": "1.0.0",
+  "description": "chessElo ======================",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epicleptico/chessElo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epicleptico/chessElo/issues"
+  },
+  "homepage": "https://github.com/epicleptico/chessElo#readme"
+}

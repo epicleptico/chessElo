@@ -1,0 +1,17 @@
+{
+  "name": "chesselo",
+  "description": "chessElo ======================",
+  "main": "Gruntfile.js",
+  "authors": [
+    "epic <alfixos@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/epicleptico/chessElo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
